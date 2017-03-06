@@ -2,10 +2,11 @@
 use strict;
 use warnings;
 
-$willi=FALSE;
+my $liste=(1,2,3);
 
-if($willi)
+
+if($liste[1]==2)
 {
 
-print "Hello World! \n";
+    print "Hello World! \n";
 }
