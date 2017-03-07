@@ -52,6 +52,38 @@ sub schritt_rechts
 }
 
 
+sub schritt_links
+{
+ my$robot=$_[0];
+ $robot->{pos}[0]=$robot->{pos}[0]-1;
+}
+sub schritt_vor
+{
+ my$robot=$_[0];
+ $robot->{pos}[1]=$robot->{pos}[1]+1;
+}
+sub schritt_hinter
+{
+ my$robot=$_[0];
+ $robot->{pos}[1]=$robot->{pos}[1]-1;
+}
+
+sub ping
+{
+    my$robot=$_[0];
+    my $pingX=$robot->{pos}[0];
+    my $pingY=$robot->{pos}[1];
+    my @coord=($pingX,$pingY);
+    return @coord;
+}
+
+
+sub name
+{
+    my$robot=$_[0];
+    my$robname=$robot->{name};
+    return $robname;
+}
 
 
 1;
