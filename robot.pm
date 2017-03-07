@@ -5,7 +5,7 @@ package robot;
 
 sub new
 {
-    my$name=$_[0];
+    my$name=$_[1];
 
     my$robot={rechts_arm=>'unten',
 	      links_arm=>'unten',
@@ -27,6 +27,13 @@ sub links_pos
 {
     my$robot=$_[0];
     return $robot->{links_arm};
+}
+
+
+sub rechts_pos
+{
+    my$robot=$_[0];
+    return $robot->{rechts_arm};
 }
 
 sub links_runter
@@ -87,3 +94,4 @@ sub name
 
 
 1;
+
