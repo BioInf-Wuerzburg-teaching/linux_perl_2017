@@ -11,7 +11,12 @@ Zum Schluss kann Erdotrumpin per Dekret feststellen, dass er die Weltherrschaft 
 Sehr schön
 Alles lupenreine Demokraten
 =cut
- 
+
+
+=pod
+Der Robby wird neu gemacht wir brauchten erstmal was zum testen TestyTest
+=cut
+
 sub new
 {
  my $name = $_[1];   
@@ -22,7 +27,7 @@ sub new
 		name    => $name,
 		pos     => [0,0],
 		Geschlecht => 'XX'};
-    bless $roboter,'roboter';
+    bless $roboter,'Weltherrschaft';
     return $roboter;
  
 }
@@ -40,7 +45,7 @@ sub bewegen_l
 {
     my $robot=$_[0];
     $robot->{pos}->[0]= $robot->{pos}->[0]-1;
-    return $robot->{pos};
+    return $robot->{pos}->[0];
 }
 
 =pod
@@ -53,7 +58,7 @@ sub bewegen_r
 {
     my $robot=$_[0];
     $robot->{pos}->[0]= $robot->{pos}->[0]+1;
-    return $robot->{pos};
+    return $robot->{pos}->[0];
 }
 
 =pod
@@ -66,7 +71,7 @@ sub bewegen_vor
 {
     my $robot=$_[0];
     $robot->{pos}->[1]= $robot->{pos}->[1]+1;
-    return $robot->{pos};  
+    return $robot->{pos}->[1];
 }
 
 =pod
@@ -79,7 +84,7 @@ sub bewegen_zur
 {
     my $robot=$_[0];
     $robot->{pos}->[1]= $robot->{pos}->[1]-1;
-    return $robot->{pos};
+    return $robot->{pos}->[1];
 }
 
 =pod
@@ -105,6 +110,10 @@ sub Geschlechtsumwandlung
     }
 
     
+}
+
+sub zeig_dich
+{
 }
 
 =pod

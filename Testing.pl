@@ -5,18 +5,23 @@ use Test::More; #Test tba ##
 
 use_ok('Weltherrschaft');
 
-
+can_ok('Weltherrschaft','new');
+my$bob = new_ok('Weltherrschaft'=>['roboter']);
 
 can_ok('Weltherrschaft','bewegen_l');
-my @pos = (0,0);
 
-is(my$robot->bewegen_l(),$pos[0],$pos[0]-1);
+is($bob->bewegen_l(),"-1","links_Test");
 
 can_ok('Weltherrschaft','bewegen_r');
+is($bob->bewegen_r(),"0","links_Test");
+
 can_ok('Weltherrschaft','bewegen_vor');
+is($bob->bewegen_vor(),"1","links_Test");
+
 can_ok('Weltherrschaft','bewegen_zur');
+is($bob->bewegen_zur(),"0","links_Test");
 
-
+can_ok('Weltherrschaft','zeig_dich');
 
  
 
