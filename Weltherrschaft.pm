@@ -112,8 +112,16 @@ sub Geschlechtsumwandlung
     
 }
 
+=pod
+Hier zeigt sich der Roboter und gibt die Position auf X und Y Achse aus 
+=cut
+    
+
 sub zeig_dich
 {
+    my $roboter = $_;
+    print 'Erdotrumpin befindet sich auf X: $roboter->{pos}[0] Y: $roboter->{pos}[1]';
+ 
 }
 
 =pod
