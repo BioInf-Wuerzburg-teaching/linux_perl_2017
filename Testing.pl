@@ -18,10 +18,11 @@ can_ok('Weltherrschaft','bewegen_zur');
 
 
 
-
+ 
 
 can_ok('Weltherrschaft','Geschlechtsumwandlung');  
-can_ok('Weltherrschaft','Referendum');  
+can_ok('Weltherrschaft','Referendum');
+#is('  
 
 
 done_testing()
