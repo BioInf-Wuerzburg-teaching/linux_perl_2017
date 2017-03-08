@@ -11,7 +11,7 @@ sub new
     
     my$robot = { rechtsa => 'unten',
 		 linksa => 'unten',
-		 sex => 'Apache',
+		 sex  => 'Apache',
 		 name => $name,
 		 pos => [1,1]},;
 
@@ -72,6 +72,14 @@ sub name
    $robot->{name}='bob';
 }
 
+sub sex
+{
+    my$robot=$_[0];
+    $robot->{sex}='Apache';
+}
+
+
+
 sub genderchange
 {
     my$robot=$_[0];
@@ -91,9 +99,8 @@ sub Welt_Zerstoeren
 {
 }
 
-sub add
+sub Bier_trinken
 {
-    return 8;
 }
 
 
