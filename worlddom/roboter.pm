@@ -2,6 +2,8 @@ package roboter;
 use strict;
 use warnings;
 
+# CONSTRUCTOR der Klasse 'roboter'
+#---------------------------------------------------------------------------------------
 sub new
 {
  my $name = $_[1];   
@@ -19,6 +21,61 @@ sub new
 
 
 #---------------------------------------------------------------------------------------
+=pod
+Die Methode att_change() dient zur gezielten Änderung von Attributen in der Klasse 'roboter'.
+Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
+	-Name des Attributs
+	-gewünschte Änderung im Wert
+Beispiel:
+	$Objekt_der_Klasse_roboter->att_change('arm_li', 'oben');
+	
+Sollte sich die Datenstruktur des Construktors ändern, müssen alle weiteren Änderungen nur in att_change() gemacht werden.
+=cut
+sub att_change
+{
+	my($roboter, $att, $att_zustand)=@_;
+	
+	if($att eq 'arm_li')
+		{
+			$roboter->{arm_li}=$att_zustand;
+		}
+	elsif($att eq 'arm_re')
+		{
+			$roboter->{arm_re}=$att_zustand;
+		}
+	elsif($att eq 'hand_li')
+		{
+			$roboter->{hand_li}=$att_zustand;
+		}
+	elsif($att eq 'hand_re')
+		{
+			$roboter->{hand_re}=$att_zustand;
+		}
+	elsif($att eq 'pos')
+		{
+			$roboter->{pos}=$att_zustand;
+		}
+	elsif($att eq 'Geschlecht')
+		{
+			$roboter->{Geschlecht}=$att_zustand;
+		}
+}
+
+#---------------------------------------------------------------------------------------
+
+=pod
+Die Methode arm() ändert gezielt die Zustände der Attribute 'arm_li' und 'arm_re'.
+Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
+	-linker oder rechter Arm ('links' || 'rechts')
+	-gewünschte Änderung in der Armposition ('hoch', 'runter')
+Beispiel:
+	$Objekt_der_Klasse_roboter->arm('links' || 'hoch');
+	
+Wenn unbekannte Parameter angegeben werden, gibt die Methode entsprechende Fehlermeldungen per print() aus.
+=cut
+
+
+
 
 sub arm
 {
@@ -27,91 +84,106 @@ sub arm
     if ($arm eq 'links')
     {
     
-	if ($richtung eq 'hoch')
-	{ 
-	    $roboter -> {arm_li} = 'oben';
-	}
+		if ($richtung eq 'hoch')
+		{ 
+			$roboter->att_change('arm_li','oben');
+		}
     
-	elsif ($richtung eq 'runter')
-	{
-	    $roboter -> {arm_li} = 'unten';
-	}
+		elsif ($richtung eq 'runter')
+		{
+			$roboter->att_change('arm_li','unten');
+		}
 
-	else ($richtung ne 'hoch'| $richtung ne 'runter') {print "angegebener Parameter für Richtung ist weder 'hoch' noch 'runter'";
-	}
+		else 
+		{
+			print "angegebener Parameter für Richtung ist weder 'hoch' noch 'runter'";
+		}
     }
 
  elsif ($arm eq 'rechts')
-    {
-    
-	if ($richtung eq 'hoch')
-	{ 
-	    $roboter -> {arm_re} = 'oben';
-	}
-    
-	elsif ($richtung eq 'runter')
 	{
-	    $roboter -> {arm_re} = 'unten';
-	}
+    
+		if ($richtung eq 'hoch')
+		{ 
+			$roboter->att_change('arm_re','oben');
+		}
+    
+		elsif ($richtung eq 'runter')
+		{
+			$roboter->att_change('arm_re','unten');
+		}
 
-	else ($richtung ne 'hoch'| $richtung ne 'runter')
+		else
 	
-	{
-	    print "angegebener Parameter für Richtung ist weder 'hoch' noch 'runter'";
-	}
+		{
+			print "angegebener Parameter für Richtung ist weder 'hoch' noch 'runter'";
+		}
     }
-    else ($arm ne 'links'| $arm ne 'rechts')
+else
     {
 	print "angegebener Parameter für Arm ist weder 'links' noch 'rechts' ";	
     }
 }
 
 #------------------------------------------------------------------------------------------------------------
-  
+ 
+=pod
+Die Methode hand() ändert gezielt die Zustände der Attribute 'hand_li' und 'hand_re'.
+Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
+	-linke oder rechte Hand ('links' || 'rechts')
+	-gewünschte Änderung in der Armposition ('auf' || 'zu')
+Beispiel:
+	$Objekt_der_Klasse_roboter->arm('links', 'hoch');
+	
+Wenn unbekannte Parameter angegeben werden, gibt die Methode entsprechende Fehlermeldungen per print() aus.
+=cut
+
 sub hand
 {
-    my $roboter,$hand, $zustand = @_;
+    my ($roboter,$hand, $zustand) = @_;
 
     if ($hand eq 'links')
     {
     
-	if ($zustand eq 'auf')
-	{ 
-	    $roboter -> {hand_li} = 'offen';
-	}
+		if ($zustand eq 'auf')
+		{ 
+			$roboter->att_change('hand_li','offen');
+		}
     
-	elsif ($zustand eq 'zu')
-	{
-	    $roboter -> {hand_li} = 'geschlossen';
-	}
+		elsif ($zustand eq 'zu')
+		{
+			$roboter->att_change('hand_li','geschlossen');
+		}
 
-	else ($zustand ne 'auf'| $zustand ne 'zu') {print "angegebener Parameter für Richtung ist weder 'auf' noch 'zu'";
-	}
+		else
+		{
+			print "angegebener Parameter für Richtung ist weder 'auf' noch 'zu'";
+		}
     }
 
  elsif ($hand eq 'rechts')
     {
     
-	if ($zustand eq 'auf')
-	{ 
-	    $roboter -> {hand_re} = 'offen';
-	}
+		if ($zustand eq 'auf')
+		{ 
+			$roboter->att_change('hand_re','offen');
+		}
     
-	elsif ($zustand eq 'zu')
-	{
-	    $roboter -> {hand_re} = 'geschlossen';
-	}
+		elsif ($zustand eq 'zu')
+		{
+			$roboter->att_change('hand_re','geschlossen');
+		}
 
-	else ($zustand ne 'auf'| $zustand ne 'zu')
+		else
 	
+		{
+			print "angegebener Parameter für Richtung ist weder 'auf' noch 'zu'";
+		}
+    }
+else
 	{
-	    print "angegebener Parameter für Richtung ist weder 'auf' noch 'zu'";
-	}
-    }
-    else ($hand ne 'links'| $hand ne 'rechts')
-    {
 	print "angegebener Parameter für Hand ist weder 'links' noch 'rechts' ";	
-    }
+	}
 }
 
 
@@ -123,7 +195,7 @@ sub hand
 
 
 
-
+#ALTER CODE-----------------------------------ALTER CODE------------------------------------ALTER CODE---------------
 =pod
 
 sub arm_li_hoch
@@ -209,4 +281,5 @@ sub pos_hand_li
 }
 =cut
 
+#ALTER CODE-----------------------------------ALTER CODE------------------------------------ALTER CODE---------------
 1;
