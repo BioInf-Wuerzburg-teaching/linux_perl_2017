@@ -25,7 +25,7 @@ sub links_runter
     my $robot=$_[0];
     $robot->{links_a}='runter';
 }
-
+#alle so:
 sub links_pos_a
 {
     my $robot=$_[0];
