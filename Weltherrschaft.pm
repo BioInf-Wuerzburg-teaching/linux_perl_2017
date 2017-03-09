@@ -4,9 +4,9 @@ use warnings;
 
 
 =pod
-Das sind die Funktionen die der Robotor Erdotrumpin braucht um die Weltherrschaft zu erreichen.
+Das sind die Funktionen, die der Robotor Erdotrumpin braucht um die Weltherrschaft zu erreichen.
 Dazu haben wir eine Reihe an Funktionen aufgestellt, die Erdotrumpin dabei helfen.
-Er kann sich bewegen in 4 Richtungen quais in 2 Dimensionen, zur Verwirrung seiner Feinde kann er sein Geschlecht wechseln sooft er will und möchte.
+Er kann sich bewegen, in 4 Richtungen quasi in 2 Dimensionen, zur Verwirrung seiner Feinde kann er sein Geschlecht wechseln sooft er will und möchte.
 Zum Schluss kann Erdotrumpin per Dekret feststellen, dass er die Weltherrschaft an sich gerissen hat.
 Sehr schön
 Alles lupenreine Demokraten
