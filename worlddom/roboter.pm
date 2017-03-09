@@ -22,7 +22,7 @@ sub new
 
 sub arm
 {
-    my $roboter,$arm, $richtung = @_;
+    my ($roboter,$arm, $richtung) = @_;
 
     if ($arm eq 'links')
     {
