@@ -2,8 +2,23 @@ package roboter;
 use strict;
 use warnings;
 
+=pod
+Das sind die Funktionen, die der Robotor Erdotrumpin braucht um die Weltherrschaft zu erreichen.
+Dazu haben wir eine Reihe an Funktionen aufgestellt, die Erdotrumpin dabei helfen.
+Er kann sich bewegen, in 4 Richtungen quasi in 2 Dimensionen, zur Verwirrung seiner Feinde kann er sein Geschlecht wechseln sooft er will und möchte.
+Zum Schluss kann Erdotrumpin per Dekret feststellen, dass er die Weltherrschaft an sich gerissen hat.
+Sehr schön
+Alles lupenreine Demokraten
+=cut
+
+
+=pod
+Der Robby wird neu gemacht wir brauchten erstmal was zum testen TestyTest
+=cut
+
 # CONSTRUCTOR der Klasse 'roboter'
 #---------------------------------------------------------------------------------------
+
 sub new
 {
  my $name = $_[1];   
@@ -14,7 +29,9 @@ sub new
 		name    => $name,
 		pos     => [0,0],
 		Geschlecht => 'XX'};
+
     bless $roboter,'roboter';
+
     return $roboter;
  
 }
@@ -188,13 +205,6 @@ else
 
 
 
-1;
-    
-    
-
-
-
-
 #ALTER CODE-----------------------------------ALTER CODE------------------------------------ALTER CODE---------------
 =pod
 
@@ -282,4 +292,120 @@ sub pos_hand_li
 =cut
 
 #ALTER CODE-----------------------------------ALTER CODE------------------------------------ALTER CODE---------------
+
+=pod
+
+Der Robby bewegt sich nach links
+
+=cut
+
+  
+
+   
+sub bewegen_l
+{
+    my $robot=$_[0];
+    $robot->{pos}->[0]= $robot->{pos}->[0]-1;
+    return $robot->{pos}->[0];
+}
+
+=pod
+
+Der Robby bewegt sich nach rechts
+
+=cut
+
+sub bewegen_r
+{
+    my $robot=$_[0];
+    $robot->{pos}->[0]= $robot->{pos}->[0]+1;
+    return $robot->{pos}->[0];
+}
+
+=pod
+
+Der Robby bewegt sich nach vorne
+
+=cut
+
+sub bewegen_vor
+{
+    my $robot=$_[0];
+    $robot->{pos}->[1]= $robot->{pos}->[1]+1;
+    return $robot->{pos}->[1];
+}
+
+=pod
+
+Der Robby bewegt sich nach hinten
+
+=cut
+
+sub bewegen_zur
+{
+    my $robot=$_[0];
+    $robot->{pos}->[1]= $robot->{pos}->[1]-1;
+    return $robot->{pos}->[1];
+}
+
+=pod
+
+Der Robby ändert seine Geschlecht_INNEN
+
+=cut
+
+sub Geschlechtsumwandlung
+{
+    
+    my $Gender = $_;
+    if($Gender -> {Geschlecht} eq "XX")
+    {
+	
+	$Gender -> {Geschlecht}='XY';
+    }
+	  
+    elsif($Gender -> {Geschlecht} eq "XY")
+    {
+	
+	$Gender -> {Geschlecht}='XX';
+    }
+
+    
+}
+
+=pod
+Hier zeigt sich der Roboter und gibt die Position auf X und Y Achse aus 
+=cut
+    
+
+sub zeig_dich
+{
+    my $roboter = $_;
+    print 'Erdotrumpin befindet sich auf X: $roboter->{pos}[0] Y: $roboter->{pos}[1]';
+ 
+}
+
+=pod
+
+Der Robby erlangt Weltherrschaft
+
+=cut
+    
+
+sub Referendum
+{
+
+    print ('Erdotrumpin hat die Weltherrschaft übernommen');
+    return 'gedruckt';
+}
+
+
+sub move
+
+{
+   # if($_[1] eq 'r')
+	
+}
+
 1;
+
