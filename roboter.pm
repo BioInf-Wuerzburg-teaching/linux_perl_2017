@@ -58,6 +58,12 @@ ein Geschlecht, dass entweder weiblich (XX) oder maennlich (XY)
 
 =cut    
 
+=pod
+
+
+
+=cut
+    
 sub new
 {
     my $name = $_[1];   
@@ -72,55 +78,43 @@ sub new
     return $roboter;
 }
 
-sub arm
+sub change
 {
     my $robot=shift;
-    my $arm_seite=shift;
-    my $arm_pos=shift;
-    if ($arm_seite eq "links")
+    my $komponente=shift;
+    my $seite=shift;
+    my $zustand=shift;
+    my @attribute=("arm_li","arm_re","hand_li","hand_re");
+    if($komponente eq "arm" && $seite eq "links")
     {
-	$robot->veraendern($arm_pos,"arm_li");
-	return($robot->{"arm_li"})
+	$robot->veraendern($attribute[0],$zustand);
+	return($robot->{$attribute[0]})
     }
-    elsif ($arm_seite eq "rechts")
+    elsif($komponente eq "arm" && $seite eq "rechts")
     {
-	$robot->veraendern($arm_pos,"arm_re");
-	return($robot->{"arm_re"})
+	$robot->veraendern($attribute[1],$zustand);
+	return($robot->{$attribute[1]})
     }
-    else
+    elsif($komponente eq "hand" && $seite eq "links")
     {
-	die;
+	$robot->veraendern($attribute[2],$zustand);
+	return($robot->{$attribute[2]})
     }
+    elsif($komponente eq "hand" && $seite eq "rechts")
+    {
+	$robot->veraendern($attribute[3],$zustand);
+	return($robot->{$attribute[3]})
+    }
+    
 }
 
 sub veraendern
 {
     my $robot=shift;
-    my $pos=shift;
     my $attribut=shift;
-    $robot->{$attribut}=$pos;
+    my $zustand=shift;
+    $robot->{$attribut}=$zustand;
     return($robot->{$attribut});
-}
-
-sub hand
-{
-    my $robot=shift;
-    my $arm_seite=shift;
-    my $arm_pos=shift;
-    if ($arm_seite eq "links")
-    {
-	$robot->veraendern($arm_pos,"hand_li");
-	return($robot->{"hand_li"})
-    }
-    elsif ($arm_seite eq "rechts")
-    {
-	$robot->veraendern($arm_pos,"hand_re");
-	return($robot->{"hand_re"})
-    }
-    else
-    {
-	die;
-    }
 }
 
 sub name
