@@ -11,59 +11,51 @@ my$bob = new_ok('roboter'=>['roboter']);
 can_ok('roboter','att_change');
 is($bob->att_change("arm_li","oben"),"oben","arm_links_oben");
 is($bob->att_change("arm_re","oben"),"oben","arm_rechts_oben");
-is($bob->att_change("hand_li","auf"),"auf","hand_links_auf");
-is($bob->att_change("hand_re","auf"),"auf","hand_rechts_auf");
+is($bob->att_change("hand_li","offen"),"offen","hand_links_auf");
+is($bob->att_change("hand_re","offen"),"offen","hand_rechts_auf");
 is($bob->att_change("Geschlecht","XY"),"XY","Gechlecht_geändert");
 
 my @methodlist = ('arm', 'hand', 'att_change');
 can_ok('roboter', @methodlist);
 
-is($bob->{arm_li},'unten', 'yay'); 
 
-$bob->arm('links', 'hoch');
+#is($bob->{arm_li},'unten', 'yay'); 
+is($bob->arm('links', 'hoch'),'oben', 'arm_li ist oben');
 
-is($bob->{arm_li},'oben', 'yay');
+#$bob->arm('links', 'runter');
 
-$bob->arm('links', 'runter');
-
-is($bob->{arm_li},'unten', 'yay'); 
+is($bob->arm('links', 'runter'),'unten', 'arm_li ist unten'); 
 
 
+#$bob->hand('links', 'zu');
 
+is($bob->hand('links', 'zu'),'geschlossen', 'hand_li ist geschlossen');
 
-is($bob->{hand_li},'offen', 'yay'); 
+#$bob->hand('links', 'auf');
 
-$bob->hand('links', 'zu');
-is($bob->{hand_li},'geschlossen', 'yay');
+is($bob->hand('links', 'auf'),'offen', 'hand_li ist offen'); 
 
-$bob->hand('links', 'auf');
+#---------------------------------------------------------------------------------------------------
 
-is($bob->{hand_li},'offen', 'yay'); 
+is($bob->arm('rechts', 'hoch'),'oben', 'arm_re ist oben');
 
+is($bob->arm('rechts', 'runter'),'unten', 'arm_re ist unten'); 
 
+is($bob->hand('rechts', 'zu'),'geschlossen', 'hand_re ist geschlossen');
 
-is($bob->{arm_re},'unten', 'yay'); 
-
-$bob->arm('rechts', 'hoch');
-
-is($bob->{arm_re},'oben', 'yay');
-
-$bob->arm('rechts', 'runter');
-
-is($bob->{arm_re},'unten', 'yay'); 
+is($bob->hand('rechts', 'auf'),'offen', 'hand_re ist offen'); 
 
 
 
 
-is($bob->{hand_re},'offen', 'yay'); 
 
-$bob->hand('rechts', 'zu');
 
-is($bob->{hand_re},'geschlossen', 'yay');
 
-$bob->hand('rechts', 'auf');
 
-is($bob->{hand_re},'offen', 'yay'); 
+
+
+$bob->att_change('pos_x',0);
+$bob->att_change('pos_y',0);
 
 
 can_ok('roboter','bewegen_l');
