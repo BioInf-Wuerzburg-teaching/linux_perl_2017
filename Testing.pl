@@ -16,4 +16,7 @@ is($bob->arm("rechts","unten"),"unten","arm_rechts_unten");
 
 can_ok('roboter','hand');
 is($bob->hand("links","auf"),"auf","hand_links_auf");
+is($bob->hand("links","zu"),"zu","hand_links_zu");
+is($bob->hand("rechts","auf"),"auf","hand_rechts_auf");
+is($bob->hand("rechts","zu"),"zu","hand_links_zu");
 done_testing()
