@@ -1,6 +1,5 @@
 use strict;
 use warnings;
-use Data::Dumper;
 
 use Test::More; 
 
@@ -8,17 +7,18 @@ use_ok('roboter');
 can_ok('roboter','new');
 my $bob = new_ok('roboter'=>['bob']);
 
-can_ok('roboter','arm');
-is($bob->arm("links","oben"),"oben","arm_links_oben");
-is($bob->arm("links","unten"),"unten","arm_links_unten");
-is($bob->arm("rechts","oben"),"oben","arm_rechts_oben");
-is($bob->arm("rechts","unten"),"unten","arm_rechts_unten");
+can_ok('roboter','change');
+is($bob->change("arm","links","oben"),"oben","change_1");
+is($bob->change("arm","links","unten"),"unten","change_2");
+is($bob->change("arm","rechts","oben"),"oben","change_3");
+is($bob->change("arm","rechts","unten"),"unten","change_4");
+is($bob->change("hand","links","oben"),"oben","change_5");
+is($bob->change("hand","links","unten"),"unten","change_6");
+is($bob->change("hand","rechts","oben"),"oben","change_7");
+is($bob->change("hand","rechts","unten"),"unten","change_8");
 
-can_ok('roboter','hand');
-is($bob->hand("links","auf"),"auf","hand_links_auf");
-is($bob->hand("links","zu"),"zu","hand_links_zu");
-is($bob->hand("rechts","auf"),"auf","hand_rechts_auf");
-is($bob->hand("rechts","zu"),"zu","hand_links_zu");
+can_ok('roboter','veraendern');
+#is($bob->veraendern()
 
 can_ok('roboter','name');
 is($bob->name("franzi"),"franzi","name_change");
