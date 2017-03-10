@@ -79,11 +79,8 @@ sub arm
     my $arm_pos=shift;
     if($arm_seite eq "links")
     {
-	if($arm_pos eq "oben")
-	{
-	    $robot->{"arm_li"}="oben";
-	    return($robot->{"arm_li"});
-	}
+	$robot->{"arm_li"}=$arm_pos;
+	return($robot->{"arm_li"});
     }
 }
 
