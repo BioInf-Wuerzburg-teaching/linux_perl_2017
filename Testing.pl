@@ -75,7 +75,9 @@ can_ok('roboter','Geschlechtsumwandlung');
 can_ok('roboter','Referendum');
 can_ok('roboter','move');
 
+my @output = $bob->move();
+my @expected = (0,0);
+is_deeply(\@output, \@expected, 'MoveTest');
 
-is($bob->move(),"0",'move_method');
 
-done_testing()
+done_testing();

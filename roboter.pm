@@ -515,36 +515,44 @@ sub move
 
 {
 
-    my$robot = $_[0];
-    my$dir=$_[1];
-    if($dir eq 'r')
-    {
-    $robot->{pos}->[0]= $robot->{pos}->[0]+1;
-    return $robot->{pos}->[0,1];
-    }
+    my$robot =shift;
     
-    elsif($dir eq 'l')
-    { 
-    $robot->{pos}->[0]= $robot->{pos}->[0]-1;
-    return $robot->{pos}->[0,1];
-    }
-    
-    elsif($dir eq 'v')
+   	
+    if(@_)
     {
-    $robot->{pos}->[1]= $robot->{pos}->[1]+1;
-    return $robot->{pos}->[0,1];
-    }
+	my$dir = shift;
+	
+	if($dir eq 'r')
+	{
+	$robot->{pos}->[0]= $robot->{pos}->[0]+1;
+
+	}
     
-    elsif($dir eq 'z')
-    {
-    $robot->{pos}->[1]= $robot->{pos}->[1]-1;
-    return $robot->{pos}->[0,1];
-    }
+	elsif($dir eq 'l')
+	{ 
+	$robot->{pos}->[0]= $robot->{pos}->[0]-1;
+
+	}
     
-    else
-    {
-	return $robot->{pos}->[0,1];
+	elsif($dir eq 'v')
+	{
+	$robot->{pos}->[1]= $robot->{pos}->[1]+1;
+
+	}
+    
+	elsif($dir eq 'z')
+	{
+	$robot->{pos}->[1]= $robot->{pos}->[1]-1;
+
+	}
+	
+	else
+	{
+	    print "rtfm\n";
+	}
     }
+    return @{$robot->{pos}};    
 }
+    
 1;
 
