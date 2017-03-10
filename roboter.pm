@@ -26,13 +26,13 @@ einen rechten Arm (arm_re), der oben oder unten sein kann
 
 =item
 
-eine linke Hand (hand_li), die offen oder zu sein kann
+eine linke Hand (hand_li), die offen (auf) oder zu sein kann
 
 =cut
 
 =item
 
-eine rechte Hand (hand_re), die offfen oder zu sein kann
+eine rechte Hand (hand_re), die offfen (auf) oder zu sein kann
 
 =cut
 
@@ -63,8 +63,8 @@ sub new
     my $name = $_[1];   
     my $roboter = {"arm_li"  => 'unten',
 		   "arm_re"  => 'unten',
-		   "hand_li" => 'offen',
-		   "hand_re" => 'offen',
+		   "hand_li" => 'auf',
+		   "hand_re" => 'auf',
 		   "name"    => $name,
 		   "pos"     => [0,0],
 		   "Geschlecht" => 'XX'};
@@ -83,7 +83,11 @@ sub arm
 
 sub hand
 {
-    
+    my $robot=shift;
+    my $hand_seite=shift;
+    my $hand_zustand=shift;
+    $robot->{$hand_seite}=$hand_zustand;
+    return($robot->{$hand_seite});
 }
 
 1;
