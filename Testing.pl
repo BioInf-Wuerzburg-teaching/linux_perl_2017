@@ -71,8 +71,6 @@ is($bob->bewegen_vor(),"1","links_Test");
 can_ok('roboter','bewegen_zur');
 is($bob->bewegen_zur(),"0","links_Test");
 
-can_ok('roboter','zeig_dich');
-
 can_ok('roboter','Geschlechtsumwandlung');  
 can_ok('roboter','Referendum');
 can_ok('roboter','move');
