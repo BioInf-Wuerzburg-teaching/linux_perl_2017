@@ -123,7 +123,7 @@ sub att_change
 	    
 	elsif($att eq 'pos_x')
 	{
-	    if($att_zustand == /^[0-9]+$/)
+	    if($att_zustand =~ /^[0-9]+$/)
 	     
                 {
 			$roboter->{pos}[0]=$att_zustand;
