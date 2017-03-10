@@ -74,6 +74,17 @@ sub new
 
 sub arm
 {
+    my $robot=shift;
+    my $arm_seite=shift;
+    my $arm_pos=shift;
+    if($arm_seite eq "links")
+    {
+	if($arm_pos eq "oben")
+	{
+	    $robot->{"arm_li"}="oben";
+	    return($robot->{"arm_li"});
+	}
+    }
 }
 
 1;
