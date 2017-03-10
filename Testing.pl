@@ -21,4 +21,5 @@ is($bob->hand("rechts","auf"),"auf","hand_rechts_auf");
 is($bob->hand("rechts","zu"),"zu","hand_links_zu");
 
 can_ok('roboter','name');
+is($bob->name("franzi"),"franzi","name_change");
 done_testing()
