@@ -3,18 +3,23 @@ use strict;
 use warnings;
 
 =pod
+
 Das sind die Funktionen, die der Robotor Erdotrumpin braucht um die Weltherrschaft zu erreichen.
 Dazu haben wir eine Reihe an Funktionen aufgestellt, die Erdotrumpin dabei helfen.
 Er kann sich bewegen, in 4 Richtungen quasi in 2 Dimensionen, zur Verwirrung seiner Feinde kann er sein Geschlecht wechseln sooft er will und möchte.
 Zum Schluss kann Erdotrumpin per Dekret feststellen, dass er die Weltherrschaft an sich gerissen hat.
 Sehr schön
 Alles lupenreine Demokraten
+
 =cut
 
 
 =pod
+
 Der Robby wird neu gemacht wir brauchten erstmal was zum testen TestyTest
+
 =cut
+    
 
 # CONSTRUCTOR der Klasse 'roboter'
 #---------------------------------------------------------------------------------------
@@ -37,8 +42,10 @@ sub new
 }
 
 
-#---------------------------------------------------------------------------------------
+#------
+
 =pod
+
 Die Methode att_change() dient zur gezielten Änderung von Attributen in der Klasse 'roboter'.
 Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
 	-Name des Attributs
@@ -47,7 +54,9 @@ Beispiel:
 	$Objekt_der_Klasse_roboter->att_change('arm_li', 'oben');
 	
 Sollte sich die Datenstruktur des Construktors ändern, müssen alle weiteren Änderungen nur in att_change() gemacht werden.
+
 =cut
+    
 sub att_change
 {
 	my($roboter, $att, $att_zustand)=@_;
@@ -81,6 +90,7 @@ sub att_change
 #---------------------------------------------------------------------------------------
 
 =pod
+
 Die Methode arm() ändert gezielt die Zustände der Attribute 'arm_li' und 'arm_re'.
 Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
 	-linker oder rechter Arm ('links' || 'rechts')
@@ -89,9 +99,8 @@ Beispiel:
 	$Objekt_der_Klasse_roboter->arm('links' || 'hoch');
 	
 Wenn unbekannte Parameter angegeben werden, gibt die Methode entsprechende Fehlermeldungen per print() aus.
+
 =cut
-
-
 
 
 sub arm
@@ -145,6 +154,7 @@ else
 #------------------------------------------------------------------------------------------------------------
  
 =pod
+
 Die Methode hand() ändert gezielt die Zustände der Attribute 'hand_li' und 'hand_re'.
 Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
 	-linke oder rechte Hand ('links' || 'rechts')
@@ -153,6 +163,7 @@ Beispiel:
 	$Objekt_der_Klasse_roboter->arm('links', 'hoch');
 	
 Wenn unbekannte Parameter angegeben werden, gibt die Methode entsprechende Fehlermeldungen per print() aus.
+
 =cut
 
 sub hand
@@ -289,11 +300,15 @@ sub pos_hand_li
     my $roboter = $_[0];
     return $roboter -> {hand_li};
 }
+
+
 =cut
 
 #ALTER CODE-----------------------------------ALTER CODE------------------------------------ALTER CODE---------------
 
+    
 =pod
+
 
 Der Robby bewegt sich nach links
 
@@ -353,6 +368,7 @@ sub bewegen_zur
 Der Robby ändert seine Geschlecht_INNEN
 
 =cut
+    
 
 sub Geschlechtsumwandlung
 {
@@ -374,8 +390,11 @@ sub Geschlechtsumwandlung
 }
 
 =pod
+
 Hier zeigt sich der Roboter und gibt die Position auf X und Y Achse aus 
-=cut
+ 
+ =cut
+     
     
 
 sub zeig_dich
@@ -399,13 +418,47 @@ sub Referendum
     return 'gedruckt';
 }
 
+=pod
 
-sub move
+zusätzliche parameter, die übergeben werden können sind für rechts : r links: l vor : v und für zurück :z.
+Wird kein parameter übergeben wird lediglich die position zurückgegeben.
+
+
+=cut
+
+sub move 
 
 {
-   # if($_[1] eq 'r')
-	
+    my$robot = $_[0];
+    my$dir=$_[1];
+    if($dir eq 'r')
+    {
+    $robot->{pos}->[0]= $robot->{pos}->[0]+1;
+    return $robot->{pos}->[0,1];
+    }
+    
+    elsif($dir eq 'l')
+    { 
+    $robot->{pos}->[0]= $robot->{pos}->[0]-1;
+    return $robot->{pos}->[0,1];
+    }
+    
+    elsif($dir eq 'v')
+    {
+    $robot->{pos}->[1]= $robot->{pos}->[1]+1;
+    return $robot->{pos}->[0,1];
+    }
+    
+    elsif($dir eq 'z')
+    {
+    $robot->{pos}->[1]= $robot->{pos}->[1]-1;
+    return $robot->{pos}->[0,1];
+    }
+    
+    else
+    {
+	return $robot->{pos}->[0,1];
+    }
 }
-
 1;
 

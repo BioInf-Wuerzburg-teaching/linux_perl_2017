@@ -34,7 +34,6 @@ is($bob->{arm_li},'unten', 'yay');
 is($bob->{hand_li},'offen', 'yay'); 
 
 $bob->hand('links', 'zu');
-
 is($bob->{hand_li},'geschlossen', 'yay');
 
 $bob->hand('links', 'auf');
@@ -84,5 +83,9 @@ can_ok('roboter','zeig_dich');
 
 can_ok('roboter','Geschlechtsumwandlung');  
 can_ok('roboter','Referendum');
+can_ok('roboter','move');
+
+
+is($bob->move(),"0",'move_method');
 
 done_testing()
