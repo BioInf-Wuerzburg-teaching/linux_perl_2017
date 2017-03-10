@@ -14,4 +14,13 @@ sub move
    return  $self->SUPER::move(@_);
    
 }
+
+sub new
+{
+    my $class = shift;
+    my$self =$class->SUPER::new(@_);
+    $self->{lampe}='an';
+    return $self;
+}
+
 1;
