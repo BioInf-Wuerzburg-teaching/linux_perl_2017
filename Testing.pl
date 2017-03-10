@@ -75,5 +75,9 @@ can_ok('roboter','zeig_dich');
 
 can_ok('roboter','Geschlechtsumwandlung');  
 can_ok('roboter','Referendum');
+can_ok('roboter','move');
+
+
+is($bob->move(),"0",'move_method');
 
 done_testing()
