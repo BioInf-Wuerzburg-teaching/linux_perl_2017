@@ -79,5 +79,8 @@ my @output = $bob->move();
 my @expected = (0,0);
 is_deeply(\@output, \@expected, 'MoveTest');
 
+@output = $bob->move('v');
+@expected = (0,1);
+is_deeply(\@output, \@expected, 'MoveVorTest');
 
 done_testing();
