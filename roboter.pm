@@ -21,22 +21,20 @@ Der Robby wird neu gemacht wir brauchten erstmal was zum testen TestyTest
 
 sub new
 {
- my $name = $_[1];   
- my $roboter = {arm_li  => 'unten',
-	        arm_re  => 'unten',
-		hand_li => 'offen',
-		hand_re => 'offen',
-		name    => $name,
-		pos     => [0,0],
-		Geschlecht => 'XX'};
-
-    bless $roboter,'roboter';
-
+    my $class = shift;
+    my $name = shift;   
+    my $roboter = {arm_li  => 'unten',
+		   arm_re  => 'unten',
+		   hand_li => 'offen',
+		   hand_re => 'offen',
+		   name    => $name,
+		   pos     => [0,0],
+		   Geschlecht => 'XX'};
+    
+    bless $roboter, $class;
+    
     return $roboter;
- 
 }
-
-
 #------
 
 =pod
