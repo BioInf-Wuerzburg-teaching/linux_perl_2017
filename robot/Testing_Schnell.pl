@@ -4,7 +4,7 @@ use Test::More;
 
 use_ok('robot::schnell');
 my $fast_bob=new_ok('robot::schnell'=>['petra']);
-
+ok(exists $fast_bob->{lampe},'Lamptest');
 can_ok('robot::schnell','move');
 
 my @output = $fast_bob->move();
@@ -14,5 +14,8 @@ is_deeply(\@output, \@expected, 'MoveTest');
 @output = $fast_bob->move('v');
 @expected = (0,2);
 is_deeply(\@output, \@expected, 'MoveVorTest');
+
+
+
 
 done_testing();
