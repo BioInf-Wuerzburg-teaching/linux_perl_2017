@@ -81,4 +81,9 @@ sub arm
     return($robot->{$arm_seite});
 }
 
+sub hand
+{
+    
+}
+
 1;
