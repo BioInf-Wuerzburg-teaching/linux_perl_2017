@@ -3,21 +3,20 @@ use strict;
 use warnings;
 
 =pod
+
 Das sind die Funktionen, die der Robotor Erdotrumpin braucht um die Weltherrschaft zu erreichen.
 Dazu haben wir eine Reihe an Funktionen aufgestellt, die Erdotrumpin dabei helfen.
 Er kann sich bewegen, in 4 Richtungen quasi in 2 Dimensionen, zur Verwirrung seiner Feinde kann er sein Geschlecht wechseln sooft er will und möchte.
 Zum Schluss kann Erdotrumpin per Dekret feststellen, dass er die Weltherrschaft an sich gerissen hat.
 Sehr schön
 Alles lupenreine Demokraten
-=cut
 
-
-=pod
 Der Robby wird neu gemacht wir brauchten erstmal was zum testen TestyTest
+
 =cut
 
 # CONSTRUCTOR der Klasse 'roboter'
-#---------------------------------------------------------------------------------------
+#---------------------------------------------------------x------------------------------
 
 sub new
 {
@@ -39,43 +38,134 @@ sub new
 
 #---------------------------------------------------------------------------------------
 =pod
+
 Die Methode att_change() dient zur gezielten Änderung von Attributen in der Klasse 'roboter'.
 Hierzu müssen beim rufen der Methode durch ein Objekt die entsprechenden Parameter übergeben werden:
 	-Name des Attributs
-	-gewünschte Änderung im Wert
-Beispiel:
-	$Objekt_der_Klasse_roboter->att_change('arm_li', 'oben');
+	-gewünschte Änderung des Zustands
+Allgemein:
+	$Objekt_der_Klasse_roboter->att_change($attribut, $zustand);
 	
 Sollte sich die Datenstruktur des Construktors ändern, müssen alle weiteren Änderungen nur in att_change() gemacht werden.
+
+Moegliche Eingaben:
+    -"arm_li"
+    -"arm_re"
+       ->"oben" || "unten"
+    -"hand_li"
+    -"hand_re"
+       ->"offen" || "geschlossen"
+    -"pos_x"
+    -"pos_y"
+       ->[0-9]*
+    -"Geschlecht"
+       ->"XX" || "XY"
+    
 =cut
+    
 sub att_change
 {
 	my($roboter, $att, $att_zustand)=@_;
 	
 	if($att eq 'arm_li')
+	     { 
+	     if ($att_zustand eq "oben" || $att_zustand eq "unten")
 		{
 			$roboter->{arm_li}=$att_zustand;
 		}
+	     else
+	        {
+		 die "zweiter Parameter muss 'oben' oder 'unten' sein";
+		}
+	      }
+	
+
+	
 	elsif($att eq 'arm_re')
+	     { 
+	     if ($att_zustand eq "oben" || $att_zustand eq "unten")
 		{
 			$roboter->{arm_re}=$att_zustand;
 		}
+	     else
+	        {
+		 die "zweiter Parameter muss 'oben' oder 'unten' sein";
+	        }
+	     }
+	    
 	elsif($att eq 'hand_li')
+
+	    { 
+	     if ($att_zustand eq "offen" || $att_zustand eq "geschlossen")
 		{
 			$roboter->{hand_li}=$att_zustand;
 		}
+	     else
+	        {
+		 die "zweiter Parameter muss 'offen' oder 'geschlossen' sein";
+		}
+	      }
+
+
 	elsif($att eq 'hand_re')
+
+	     { 
+	     if ($att_zustand eq "offen" || $att_zustand eq "geschlossen")
 		{
 			$roboter->{hand_re}=$att_zustand;
 		}
-	elsif($att eq 'pos')
-		{
-			$roboter->{pos}=$att_zustand;
+	     else
+	        {
+		 die "zweiter Parameter muss 'offen' oder 'geschlossen' sein";
 		}
-	elsif($att eq 'Geschlecht')
-		{
-			$roboter->{Geschlecht}=$att_zustand;
+	      }
+
+	    
+	elsif($att eq 'pos_x')
+	{
+	    if($att_zustand == /^[0-9]+$/)
+	     
+                {
+			$roboter->{pos}[0]=$att_zustand;
 		}
+	    else
+	        {
+		    die "Parameter2 muss ganze Zahl sein";
+	        }
+	} 
+	elsif($att eq 'pos_y')
+	{
+	    if($att_zustand =~ /^[0-9]+$/)
+                {
+			$roboter->{pos}[1]=$att_zustand;
+		}
+	    else
+	        {
+		    die "Parameter2 muss ganze Zahl sein";
+	        }
+
+	}
+	
+	elsif($att eq 'Geschlecht')	 
+	{
+	    if($att_zustand eq 'XX' || $att_zustand eq 'XY')
+	     {
+	        
+	      	$roboter->{Geschlecht}=$att_zustand;
+		
+	     }
+       
+	    else
+            {
+		die "ist weder XX noch XY";
+       	    }
+	}
+
+	else
+	{
+	    die "Siehe Liste fuer valide Argumente"
+	}
+	    
 }
 
 #---------------------------------------------------------------------------------------
@@ -403,7 +493,12 @@ sub Referendum
 sub move
 
 {
-   # if($_[1] eq 'r')
+    my$bewegung=$_[1];
+    
+
+
+
+
 	
 }
 
