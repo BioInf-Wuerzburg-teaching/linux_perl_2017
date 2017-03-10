@@ -11,4 +11,8 @@ my @output = $fast_bob->move();
 my @expected = (0,0);
 is_deeply(\@output, \@expected, 'MoveTest');
 
+@output = $fast_bob->move('v');
+@expected = (0,2);
+is_deeply(\@output, \@expected, 'MoveVorTest');
+
 done_testing();
