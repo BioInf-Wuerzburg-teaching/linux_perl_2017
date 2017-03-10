@@ -77,21 +77,58 @@ sub arm
     my $robot=shift;
     my $arm_seite=shift;
     my $arm_pos=shift;
-    $robot->{$arm_seite}=$arm_pos;
-    return($robot->{$arm_seite});
+    if ($arm_seite eq "links")
+    {
+	$robot->veraendern($arm_pos,"arm_li");
+	return($robot->{"arm_li"})
+    }
+    elsif ($arm_seite eq "rechts")
+    {
+	$robot->veraendern($arm_pos,"arm_re");
+	return($robot->{"arm_re"})
+    }
+    else
+    {
+	die;
+    }
+}
+
+sub veraendern
+{
+    my $robot=shift;
+    my $pos=shift;
+    my $attribut=shift;
+    $robot->{$attribut}=$pos;
+    return($robot->{$attribut});
 }
 
 sub hand
 {
     my $robot=shift;
-    my $hand_seite=shift;
-    my $hand_zustand=shift;
-    $robot->{$hand_seite}=$hand_zustand;
-    return($robot->{$hand_seite});
+    my $arm_seite=shift;
+    my $arm_pos=shift;
+    if ($arm_seite eq "links")
+    {
+	$robot->veraendern($arm_pos,"hand_li");
+	return($robot->{"hand_li"})
+    }
+    elsif ($arm_seite eq "rechts")
+    {
+	$robot->veraendern($arm_pos,"hand_re");
+	return($robot->{"hand_re"})
+    }
+    else
+    {
+	die;
+    }
 }
 
 sub name
 {
+    my $robot=shift;
+    my $name=shift;
+    $robot->{"name"}=$name;
+    return($robot->{"name"})
 }
 
 1;
