@@ -90,4 +90,8 @@ sub hand
     return($robot->{$hand_seite});
 }
 
+sub name
+{
+}
+
 1;
